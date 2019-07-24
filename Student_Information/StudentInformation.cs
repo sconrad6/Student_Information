@@ -3,75 +3,54 @@ namespace Student_Information
 { 
     public class StudentInformation
     {
-        public readonly int studentNumber;
-        public readonly int extraChoice;
-        
+        private readonly int studentNumber;
+        private readonly int extraChoice;
+        public static string[] students = { "Bob", "Bill", "Nate", "Joe", "Stefan", "McKenna", "LeoJohn", "Ann", "Carmen", "Ryan" };
+        private string[] hometowns = {"Gilmington", "Exeter", "Brentwood", "Altoona", "Ann Arbor", "Altoona", "Stratham", "Stratham",
+                                   "Canton", "Colchester" };
+        private string[] foods = {"carrots", "cucumbers", "chips", "pasta", "hummus", "cauliflower rice", "doughnuts", "chocolate",
+                              "noodles", "bread" };
+        private string[] plants = { "3", "4", "6", "45", "100", "0", "10", "8", "2", "7" };
+
 
         public StudentInformation(int studentNumber, int extraChoice)
         {
-            this.studentNumber = studentNumber;
+            this.studentNumber = studentNumber - 1;
             this.extraChoice = extraChoice;
-            
         }
 
-        //stores an array of students and returns the number the user chose
-        public static  string StudentNamesArray(int studentNumber)
+        public string StudentExtraInfo()
         {
-            string[] students = { "Bob", "Bill", "Nate", "Joe", "Stefan", "McKenna", "LeoJohn", "Ann", "Carmen", "Ryan" };
-                                  
-           
-          if (Validator(studentNumber))
+            switch (extraChoice)
             {
-                return students[studentNumber - 1];
+                case 1:
+                    return $"{students[studentNumber]} is from {hometowns[studentNumber]}.";
+                case 2:
+                    return $"{students[studentNumber]}'s favorite food is {foods[studentNumber]}.";
+                case 3:
+                    return $"{students[studentNumber]} has {plants[studentNumber]} plants.";
+                default:
+                    return "Invalid number";
             }
-            return null;
         }
 
-        // stores the city the people live in 
-
-        public string StudentHometownArray()
+        public static int StudentIndex(string userInput)
         {
-            string[] hometowns = {"Gilmington", "Exeter", "Brentwood", "Altoona", "Ann Arbor", "Altoona", "Stratham", "Stratham",
-                                   "Canton", "Colchester" };
-            if (extraChoice == 1)
+            for (int i = 0; i < students.Length; i++)
             {
-                return $"{StudentNamesArray(studentNumber)} is from {hometowns[studentNumber - 1]}.";
+                if (userInput == students[i].ToLower())
+                {
+                    return i + 1;
+                }
             }
-            return null;
+            return -1;
         }
-
-        // stores the favorite food of the person
-        public string StudentFavoriteFood()
+    
+        // validates that the user has entered a number between 1 and 10
+        public static bool Validator(int userNumber)
         {
-            string[] foods = {"carrots", "cucumbers", "chips", "pasta", "hummus", "cauliflower rice", "doughnuts", "chocolate",
-                              "noodles", "bread" };
-            if (extraChoice == 2)
-            {
-                return $"{StudentNamesArray(studentNumber)}'s favorite food is {foods[studentNumber - 1]}.";
-
-            }
-            return null;
+            return userNumber > 0 && userNumber <= 10;
         }
-
-        // stores the number of plants the person has
-        public string StudentPlants()
-        {
-            string[] plants = { "3", "4", "6", "45", "100", "0", "10", "8", "2", "7"};
-            if (extraChoice == 3)
-            {
-                return $"{StudentNamesArray(studentNumber)} has {plants[studentNumber - 1]} plants.";
-            }
-            return null;
-        }
-
-        // validates that the user has entered a number between 1 and 20
-        public static bool Validator(int studentNumber)
-        {
-            if (studentNumber > 0 && studentNumber <= 10)
-            {
-                return true;
-            }
-            return false;
-        }
+      
     }
 }
