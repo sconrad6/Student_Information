@@ -17,8 +17,8 @@ namespace Student_Information
         //stores an array of students and returns the number the user chose
         public static  string StudentNamesArray(int studentNumber)
         {
-            string[] students = { "Bob", "Bill", "Nate", "Joe", "Stefan", "McKenna", "LeoJohn", "Ann", "Carmen", "Ryan",
-                                  "Meredith", "Sam", "Lauren", "Sagar", "Savanah", "Leo", "Marie", "Paul", "Caleb", "Cailey"};
+            string[] students = { "Bob", "Bill", "Nate", "Joe", "Stefan", "McKenna", "LeoJohn", "Ann", "Carmen", "Ryan" };
+                                  
            
           if (Validator(studentNumber))
             {
@@ -32,8 +32,7 @@ namespace Student_Information
         public string StudentHometownArray()
         {
             string[] hometowns = {"Gilmington", "Exeter", "Brentwood", "Altoona", "Ann Arbor", "Altoona", "Stratham", "Stratham",
-                                   "Canton", "Colchester", "Royal Oak", "New Lebanon", "Bangalore", "Ann Arbor", "Stratham",
-                                   "Haverhill", "Haverhill", "Haverhill", "Haverhill"};
+                                   "Canton", "Colchester" };
             if (extraChoice == 1)
             {
                 return $"{StudentNamesArray(studentNumber)} is from {hometowns[studentNumber - 1]}.";
@@ -45,8 +44,7 @@ namespace Student_Information
         public string StudentFavoriteFood()
         {
             string[] foods = {"carrots", "cucumbers", "chips", "pasta", "hummus", "cauliflower rice", "doughnuts", "chocolate",
-                              "noodles", "bread", "stir fry", "veggie burgers", "oatmeal", "Indian food", "stir fry", "ice cream",
-                               "peanuts", "V8", "pringles", "smoothies"};
+                              "noodles", "bread" };
             if (extraChoice == 2)
             {
                 return $"{StudentNamesArray(studentNumber)}'s favorite food is {foods[studentNumber - 1]}.";
@@ -58,7 +56,7 @@ namespace Student_Information
         // stores the number of plants the person has
         public string StudentPlants()
         {
-            string[] plants = { "3", "4", "6", "45", "1", "0", "10", "1", "2", "7", "3", "6", "3", "5", "7", "9", "2", "6", "9", "11" };
+            string[] plants = { "3", "4", "6", "45", "100", "0", "10", "8", "2", "7"};
             if (extraChoice == 3)
             {
                 return $"{StudentNamesArray(studentNumber)} has {plants[studentNumber - 1]} plants.";
@@ -69,7 +67,7 @@ namespace Student_Information
         // validates that the user has entered a number between 1 and 20
         public static bool Validator(int studentNumber)
         {
-            if (studentNumber > 0 && studentNumber <= 20)
+            if (studentNumber > 0 && studentNumber <= 10)
             {
                 return true;
             }
